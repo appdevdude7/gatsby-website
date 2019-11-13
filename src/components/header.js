@@ -2,6 +2,11 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
+const ListLink = props => (
+  <li style={{ display: `inline-block`, marginRight: `1rem` }}>
+    <Link to={props.to}>{props.children}</Link>
+  </li>
+)
 const Header = ({ siteTitle }) => (
   <header
     style={{
@@ -9,14 +14,8 @@ const Header = ({ siteTitle }) => (
       marginBottom: `1.45rem`,
     }}
   >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
+    <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
+      <h1 style={{ display: `inline` }}>
         <Link
           to="/"
           style={{
@@ -27,7 +26,19 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
-    </div>
+    </Link>
+    <ul style={{ listStyle: `none`, float: `right` }}>
+      <ListLink to="/">Home</ListLink>
+      <ListLink to="/about/">About</ListLink>
+      <ListLink to="/contact/">Contact</ListLink>
+    </ul>
+    <div
+      style={{
+        margin: `0 auto`,
+        maxWidth: 960,
+        padding: `1.45rem 1.0875rem`,
+      }}
+    />
   </header>
 )
 
